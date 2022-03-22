@@ -69,9 +69,9 @@ app.listen(env('PORT', '3000'))
 /** Converts the raw items data sent by the client to usable data for the Stripe API */
 function getLineItems (itemsData: any): Stripe.Checkout.SessionCreateParams.LineItem[] {
 
-  return itemsData.map(data => {
+  return itemsData.map((data: any) => {
 
-    const item = itemsDB.find(item => item.id === data.id)
+    const item = itemsDB.find((item: any) => item.id === data.id)
 
     if (!item) {
       throw new Error(`Unknown item ID ${data.id}`)
